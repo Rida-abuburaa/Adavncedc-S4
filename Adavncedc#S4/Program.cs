@@ -43,8 +43,58 @@
             List<string> gradeNames = numbers.Select(num => $"Grade: {num}").ToList();
 
             Console.WriteLine(string.Join(", ", gradeNames));
-            #endregion 
+            #endregion
 
+
+
+            #region Question2 Exercise 2: Leaderboard
+
+            // 1. Create leaderboard
+            SortedDictionary<int, string> leaderboard = new SortedDictionary<int, string>();
+
+            leaderboard.Add(500, "Ahmed");
+            leaderboard.Add(200, "Sara");
+            leaderboard.Add(800, "Ali");
+            leaderboard.Add(350, "Mona");
+
+            // 2. Print all entries
+            Console.WriteLine("Leaderboard:");
+
+            foreach (var player in leaderboard)
+            {
+                Console.WriteLine($"{player.Key} = {player.Value}");
+            }
+
+            // 3. Access the first key and first value
+            var firstPlayer = leaderboard.First();
+
+            Console.WriteLine($"\nFirst score: {firstPlayer.Key}");
+            Console.WriteLine($"First player: {firstPlayer.Value}");
+
+            // 4. Check if score 500 exists
+            Console.WriteLine($"\nDoes score 500 exist? {leaderboard.ContainsKey(500)}");
+
+            // 5. Safely get the player with score 999
+            if (leaderboard.TryGetValue(999, out string playerName))
+            {
+                Console.WriteLine($"Player with score 999: {playerName}");
+            }
+            else
+            {
+                Console.WriteLine("No player has score 999.");
+            }
+
+            // 6. Remove player with score 200
+            leaderboard.Remove(200);
+
+            Console.WriteLine("\nUpdated Leaderboard:");
+
+            foreach (var player in leaderboard)
+            {
+                Console.WriteLine($"{player.Key} = {player.Value}");
+            }
+
+            #endregion 
         }
     }
 }
