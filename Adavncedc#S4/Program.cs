@@ -48,7 +48,7 @@
 
 
             #region Question2 Exercise 2: Leaderboard
-
+/*
             // 1. Create leaderboard
             SortedDictionary<int, string> leaderboard = new SortedDictionary<int, string>();
 
@@ -93,8 +93,68 @@
             {
                 Console.WriteLine($"{player.Key} = {player.Value}");
             }
+*/
+            #endregion
 
-            #endregion 
+
+
+            #region Exercise 3: Phone Book
+            // 1. Create a phone book with 4 contacts
+            Dictionary<string, string> phoneBook = new Dictionary<string, string>
+        {
+            { "Alice", "555-1001" },
+            { "Bob", "555-1002" },
+            { "Charlie", "555-1003" },
+            { "Diana", "555-1004" }
+        };
+
+            // 2. Add a new contact using [] syntax
+            // [] adds the contact if it doesn't exist, or updates it if it does.
+            phoneBook["Eve"] = "555-1005";
+
+            // 3. Try adding a duplicate using .Add()
+            try
+            {
+                phoneBook.Add("Alice", "555-9999");
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine("Add() error: " + ex.Message);
+            }
+
+            // 4. Try adding a duplicate using .TryAdd()
+            bool added = phoneBook.TryAdd("Alice", "555-8888");
+            Console.WriteLine("TryAdd() succeeded: " + added);
+
+            // 5. Search for a contact that doesn't exist
+            if (phoneBook.ContainsKey("Frank"))
+            {
+                Console.WriteLine("Frank found.");
+            }
+            else
+            {
+                Console.WriteLine("Frank not found.");
+            }
+
+            // 6. Get a contact with a fallback of "Not Found"
+            string phoneNumber = phoneBook.GetValueOrDefault("Frank", "Not Found");
+            Console.WriteLine("Frank's number: " + phoneNumber);
+
+            // 7. Print all Keys on one line
+            Console.WriteLine("Keys: " + string.Join(", ", phoneBook.Keys));
+
+            // Print all Values on another line
+            Console.WriteLine("Values: " + string.Join(", ", phoneBook.Values));
         }
+
+            #endregion
+
+
+
+
+
+
+
     }
-}
+    }
+
